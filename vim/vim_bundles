@@ -1,0 +1,83 @@
+" Define bundles via Github repos
+
+" Color scheme
+Bundle 'tomasr/molokai'
+Bundle 'croaky/vim-colors-github'
+
+" Emmet: www.emmet.io
+Bundle 'mattn/emmet-vim'
+
+" Ident
+Bundle 'nathanaelkane/vim-indent-guides'
+
+" Tree
+Bundle 'scrooloose/nerdtree'
+
+" Multople cursor
+Bundle 'terryma/vim-multiple-cursors'
+
+" Find
+Bundle "kien/ctrlp.vim"
+
+" Usage :rename[!] {newname}
+Bundle 'danro/rename.vim'
+
+" Other
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-fugitive'
+Bundle 'vim-scripts/ctags.vim'
+Bundle 'vim-scripts/tComment'
+Bundle 'tpope/vim-surround'
+
+" Ruby && Rails
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-haml'
+Bundle 'slim-template/vim-slim'
+Bundle 'groenewege/vim-less'
+Bundle 'KurtPreston/vim-autoformat-rails'
+" Bundle 'kchmck/vim-coffee-script'
+
+Bundle 'vim-scripts/ruby-matchit'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+
+" Experemetal
+Bundle 'danchoi/ri.vim'
+
+" Git
+Bundle 'airblade/vim-gitgutter'
+
+" Markdown
+Bundle 'plasticboy/vim-markdown'
+
+" Html
+Bundle 'Valloric/MatchTagAlways'
+
+" Javascript
+Bundle 'pangloss/vim-javascript'
+
+" Tag
+Bundle 'majutsushi/tagbar'
+
+" Extend Status Bar
+Bundle 'bling/vim-airline'
+
+" Undo History (http://sjl.bitbucket.org/gundo.vim/)
+Bundle 'sjl/gundo.vim'
+
+" Completetion
+Bundle 'jiangmiao/auto-pairs'
+
+" Config bundles
+source ~/.vim/vim_bundles_config
+
+" Completation system
+if has("lua")
+ source ~/.vim/vim_neocomlete_config
+endif

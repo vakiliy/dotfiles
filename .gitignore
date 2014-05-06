@@ -1,0 +1,5 @@
+vim/undo/*
+vim/buff/*
+vim/bundle/*
+vim/vim_session
+test/

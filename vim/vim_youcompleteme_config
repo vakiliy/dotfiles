@@ -1,0 +1,17 @@
+" Snippets
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+Bundle 'bonsaiben/bootstrap-snippets'
+
+set completeopt-=preview
+
+" YouCompleteMe
+Bundle 'Valloric/YouCompleteMe'
+
+" Config
+let g:ycm_min_num_of_chars_for_completion = 30
+let g:ycm_auto_trigger = 0
+let g:ycm_use_ultisnips_completer = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']

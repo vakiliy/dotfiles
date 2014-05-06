@@ -1,0 +1,107 @@
+" Completetion
+Bundle 'Shougo/neocomplete'
+Bundle 'Shougo/neosnippet'
+Bundle 'Shougo/neosnippet-snippets'
+Bundle 'honza/vim-snippets'
+Bundle 'bonsaiben/bootstrap-snippets'
+
+set completeopt-=preview
+
+" Neocomplete {
+ let g:neocomplete#enable_debug = 0
+ let g:neocomplete#disable_auto_complete=1
+ let g:acp_enableAtStartup = 1
+ let g:neocomplete#enable_at_startup = 1
+ let g:neocomplete#enable_smart_case = 1
+ let g:neocomplete#enable_camel_case = 1
+ let g:neocomplete#enable_underbar_case = 1
+ let g:neocomplete#enable_auto_delimiter = 1
+ let g:neocomplete#max_list = 15
+ let g:neocomplete#force_overwrite_completefunc = 1
+ let g:neocomplete#auto_completion_start_length = 3
+ let g:neocomplete#sources#syntax#min_keyword_length = 3
+ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+ let g:neocomplete#sources#tags#cache_limit_size = 500000000
+
+  " AutoComplPop like behavior.
+  let g:neocomplete#enable_auto_select = 1
+
+  " Define dictionary.
+  let g:neocomplete#sources#dictionary#dictionaries = {
+              \ 'default' : '',
+              \ 'vimshell' : $HOME.'/.vimshell_hist',
+              \ 'scheme' : $HOME.'/.gosh_completions'
+              \ }
+
+  " Define keyword.
+  if !exists('g:neocomplete#keyword_patterns')
+      let g:neocomplete#keyword_patterns = {}
+  endif
+  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+  " Plugin key-mappings.
+  " <C-h>, <BS>: close popup and delete backword char.
+  " inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+  " inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+  " <CR>: close popup and save indent.
+  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  function! s:my_cr_function()
+    return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+  endfunction
+
+  " <Esc>: close popup
+  inoremap <silent> <Esc> <C-r>=<SID>my_esc_function()<CR>
+  function! s:my_esc_function()
+    return pumvisible() ? neocomplete#cancel_popup() : "\<Esc>"
+  endfunction
+
+  " inoremap <expr> <Tab> pumvisible() ?  neocomplete#close_popup() : "\<Tab>"
+  inoremap <expr> <C-space> neocomplete#start_manual_complete()
+  imap <C-@> <C-Space>
+  nmap <C-\><C-[> :NeoCompleteTagMakeCache <CR>
+
+  " Enable omni completion.
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+  " Enable heavy omni completion.
+  if !exists('g:neocomplete#sources#omni#input_patterns')
+      let g:neocomplete#sources#omni#input_patterns = {}
+  endif
+
+  let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+  let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+  let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+
+  " Snippet {
+    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+    " SuperTab like snippets behavior.
+    imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)"
+    \: pumvisible() ? neocomplete#close_popup() : "\<TAB>"
+
+    smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)"
+    \: "\<TAB>"
+
+    " For snippet_complete marker.
+    if has('conceal')
+      set conceallevel=2 concealcursor=i
+    endif
+
+    " Enable snipMate compatibility feature.
+    let g:neosnippet#enable_snipmate_compatibility = 1
+
+    " Tell Neosnippet about the other snippets
+    let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+  " }

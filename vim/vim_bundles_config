@@ -1,0 +1,125 @@
+" Molokai color {
+  set term=xterm-256color
+  " set term=screen-256color
+  colorscheme molokai
+  let g:rehash256 = 0
+  let g:molokai_original = 1
+  set background=dark
+  hi Normal ctermbg=NONE
+  hi Visual term=reverse cterm=reverse guibg=Grey
+  hi CursorLine cterm=NONE ctermbg=8 ctermfg=NONE
+  hi MatchParen cterm=bold ctermbg=none ctermfg=Red
+
+  if &term =~ '256color'
+      " disable Background Color Erase (BCE) so that color schemes
+      " render properly when inside 256-color tmux and GNU screen.
+      " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+      set t_ut=
+    endif
+" }
+
+" Emmet
+" doc: https://github.com/mattn/emmet-vim/blob/master/doc/emmet.txt
+let g:user_emmet_leader_key = '<C-\><C-l>'
+let g:user_emmet_expandabbr_key = '<C-\><Tab>'
+
+" Ident
+set ts=2 sw=2 et
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_guide_size=1
+
+" Tree
+function! TreeViewType()
+  if exists("b:NERDTreeType") && b:NERDTreeType == "primary" 
+    NERDTree
+  else
+    if !exists("b:NERDTreeRoot")
+      NERDTree | wincmd l | NERDTreeFind
+    else
+      NERDTreeFind
+    endif
+  endif
+endfunction
+
+function! TreeToogle()
+   if !exists("b:NERDTreeRoot")
+    NERDTree
+  else
+    NERDTreeToggle
+  endif
+endfunction
+
+map <C-p> :call TreeViewType()<cr>
+map <C-p><C-t> :call TreeToogle()<cr>
+
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeDirArrows=1
+let g:NERTreeHighlightCursorLine=1
+
+
+" Find
+let g:ctrlp_map = '<C-p><C-p>'
+map <C-p><C-h> :CtrlPMRU<cr>
+
+" Ruby
+autocmd BufNewFile,BufRead *.html.erb   set filetype=eruby.html  " load html snippets along with erb"
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+
+" highlightruby block
+runtime macros/matchit.vim
+
+let g:rubycomplete_rails=1
+let g:rubycomplete_classes_in_global=1
+let g:rubycomplete_buffer_loading=1
+let g:rubycomplete_include_object=1
+let g:rubycomplete_include_objectspace=1
+
+" Rails
+map <silent> <Leader>== :silent call AutoFormatRails()<CR>
+
+" Rspec
+map <Leader>t  :call RunCurrentSpecFile()<CR>
+map <Leader>ts :call RunNearestSpec()<CR>
+map <Leader>tl :call RunLastSpec()<CR>
+map <Leader>ta :call RunAllSpecs()<CR>
+
+" RI
+nnoremap  <Leader>RI :call ri#OpenSearchPrompt(0)<cr> " horizontal split
+nnoremap  <Leader>ri :call ri#OpenSearchPrompt(1)<cr> " vertical split
+nnoremap  <Leader>rk :call ri#LookupNameUnderCursor()<cr> " keyword lookup "
+
+" Tag
+nmap <F8> :TagbarToggle<CR>
+
+" MatchTagAlways
+  let g:mta_filetypes = {'html' : 1, 'xhtml' : 1, 'xml' : 1, 'jinja' : 1, 'erb': 1, 'eruby': 1 }
+
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" Gundo {
+  nnoremap <s-F8> :GundoToggle<CR>
+" }
+
+" Gitgutter {
+  let g:gitgutter_map_keys = 0
+  let g:gitgutter_realtime = 0
+  let g:gitgutter_eager = 0
+  let g:gitgutter_sign_column_always = 1
+" }
+
+" Aitline {
+let g:airline_theme='molokai'
+let g:airline_enable_fugitive=1
+let g:airline_enable_syntastic=1
+let g:airline_enable_bufferline=1
+
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+let g:airline_linecolumn_prefix = '¶ '
+let g:airline_fugitive_prefix = '⎇ '
+let g:airline_paste_symbol = 'ρ'
+" }

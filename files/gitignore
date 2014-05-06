@@ -1,0 +1,15 @@
+*.DS_Store
+*.sw[nop]
+.bundle
+.env
+.idea/
+db/*.sqlite3
+log/*.log
+rerun.txt
+tags
+gems.tags
+tmp/**/*
+!tmp/cache/.keep
+zeus.json
+.ruby-gemset
+.ruby-version

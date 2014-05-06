@@ -1,0 +1,309 @@
+set mouse=a
+set virtualedit=onemore
+
+let mapleader = " "
+
+:autocmd InsertEnter * set cul
+:autocmd InsertLeave * set nocul
+
+" OS Definition
+let uname=substitute(system('uname'), '\n', '', '')
+if uname == 'Darwin' || uname == 'Mac'
+  let os = 'mac'
+  let g:opencmd = '!open'
+elseif uname == 'Linux'
+  let os = 'linux'
+  let g:opencmd = '!xdg-open'
+else
+  let os = 'undefined'
+  let g:opencmd = '!echo "Unknown howto open file: "'
+endif
+
+" Numbers
+  set number
+  set numberwidth=5
+
+" Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+" Display extra whitespace
+  set list listchars=tab:→→,trail:·
+
+set backspace=2                 " Backspace deletes like most programs in insert mode
+set showmatch
+
+set equalalways                 " split windows equally
+set splitright splitbelow       " new splits right from current and other below
+set autoread                    " supress warnings
+set wildmenu                    " wildmenu when autocomplting option
+set wildmode=full               " complete the full match, this is default behaviour
+set clipboard+=unnamed,unnamedplus,autoselect " share clipboard
+
+set nocompatible  " Use Vim settings, rather then Vi settings
+set nobackup
+set nowritebackup
+set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set ruler         " show the cursor position all the time
+set showcmd       " display incomplete commands
+set incsearch     " do incremental searching
+set laststatus=2  " Always display the status line
+set autowrite     " Automatically :write before running commands
+
+set ignorecase    " ignore case when searching
+set hlsearch      " highlight search matches
+set incsearch     " search as you type
+set gdefault      " global matching is default
+set smartcase     " use smartcase, when search query starts with Uppercase, turn off case insensitive search
+
+set lazyredraw
+set ttyfast
+
+set linespace=0
+
+" Status line
+  function! HighlightSearch()
+    if &hls
+      return 'H'
+    else
+      return ''
+    endif
+  endfunction
+
+" History
+  set history=128
+  set undolevels=512
+  set undodir=~/.vim/undo/
+  set undofile
+  set undolevels=1000
+  set undoreload=10000
+
+"  Restore last cursor position
+  if has("autocmd")
+      au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  endif
+
+" Bundle
+filetype off " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle, required
+Bundle 'gmarik/vundle'
+
+" preload bundles
+  if filereadable(expand("~/.vim/vim_bundles"))
+    source ~/.vim/vim_bundles
+  endif
+
+  filetype plugin indent on
+  set omnifunc=syntaxcomplete#Complete
+
+" HotKeys
+
+  if ! has("gui_running")
+      noremap  <ESC>[[1;6D <C-S-Left>
+      inoremap <ESC>[[1;6D <C-S-Left>
+      noremap  <ESC>[[1;6C <C-S-Right>
+      inoremap <ESC>[[1;6C <C-S-Right>
+  endif
+
+  " remove selection on backspace
+  vmap <BS> x
+  vmap <del> x
+
+  " ctag
+  map <C-\><C-]> :!ctags --fields=+l --extra=+f --languages=-javascript --exclude=.git --exclude=log -R * `rvm gemdir`/gems/* `rvm gemdir`/bundler/gems/*<CR><C-M>
+  set tags=tags;/
+
+  " undo 
+  map  <C-Z> u
+  imap <C-Z> <C-o><C-z>
+
+  " open
+  nmap  <F3> :e .<CR>
+  imap  <F3> <C-o><F3>
+
+" save
+  map <F2> :w<CR>
+  imap <F2> <Esc><F2>
+
+" replace remove
+  map   <C-h> :%s/
+  imap  <C-h> <C-o><C-h>
+  vmap  <C-h> :<bar>%s/\<<C-r><C-w>\>//gc<left><left><left>
+
+" visual mode
+  vmap <Tab> >gv
+  vmap <S-Tab> <gv
+  nmap <Tab> > <Esc>
+  nmap <S-Tab> < <Esc>
+
+"  tabs
+  map  <M-S-Left> :tabprev<CR>
+  map  <M-S-Right> :tabnext<CR>
+  imap <M-S-Left> <C-o><M-S-Left>
+  imap <M-S-Right> <C-o><M-S-Right>
+  nmap <C-t><C-c> :tabc<CR>
+  nmap <C-t><C-t> :tabnew .<CR>
+
+" Buffer
+  map  <M-Left> :bp<CR>
+  map  <M-Right> :bn<CR>
+  imap <M-Left> <C-o><M-Left>
+  imap <M-Right> <C-o><M-Right>
+
+  function! DestoyBuffer()
+    if exists("b:NERDTreeType") && b:NERDTreeType == "primary"
+      bd
+    else 
+      bp | sp |bn | bd
+    endif
+  endfunction
+
+  map   <C-b><C-d> :call DestoyBuffer()<CR>
+  imap  <C-b><C-d> <C-o><C-b><C-d>
+
+" Clipboard
+  nmap <C-d><C-d> yy]p
+  imap <C-d><C-d> <C-o>yy<C-o>]p
+
+  nmap <C-d><C-y> dd
+  imap <C-d><C-y> <C-o>dd
+
+  " copy&past selection
+  vmap <C-c> y
+  imap <C-v> <C-o>[p
+
+  " mc copy/past style
+  vmap <C-f>  :w! ~/.vim/buff/vbuf<CR>
+  nmap <S-F5> :r ~/.vim/buff/vbuf<CR>
+
+  " selection
+  vmap <S-UP> k
+  nmap <S-UP> v <S-UP>
+  imap <S-UP> <C-o><S-UP>
+
+  vmap <S-DOWN> j
+  nmap <S-DOWN> v <S-DOWN>
+  imap <S-DOWN> <C-o><S-DOWN>
+
+  vmap <S-LEFT> h
+  nmap <S-LEFT> v <S-LEFT>
+  imap <S-LEFT> <C-o><S-LEFT>
+
+  vmap <S-RIGHT> l
+  nmap <S-RIGHT> v <S-RIGHT>
+  imap <S-RIGHT> <C-o><S-RIGHT>
+
+  vmap <C-DOWN> j
+  nmap <C-DOWN> <C-v><C-DOWN>
+  imap <C-DOWN> <C-o><C-DOWN>
+
+  vmap <C-UP> k
+  nmap <C-UP> <C-v><C-UP>
+  imap <C-UP> <C-o><C-UP>
+
+  vmap <C-S-Left> b
+  nmap <C-S-Left> v<C-S-Left>
+  imap <C-S-Left> <C-o>v<C-S-Left>
+
+  vmap <C-S-Right> e
+  nmap <C-S-Right> v<C-S-Right>
+  imap <C-S-Right> <C-o>v<C-S-Right>
+
+  " Other
+  " open link under cursor
+    function! HandleURL()
+      let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;]*')
+      let s:uri = escape (s:uri, "#?&;|%")
+      if s:uri != ""
+        silent exec g:opencmd "'".s:uri."'"
+      else
+        echo "No URI found in line."
+      endif
+      redraw!
+    endfunction
+
+    map <C-\><C-g> :call HandleURL()<cr>
+
+" Open log
+:command! -nargs=* -complete=shellcmd Log new | setlocal buftype=nofile bufhidden=hide noswapfile | r! <args>
+
+" Todo
+map <C-\><C-t> :execute "silent grep -e TODO -e FIXME -Ri * --exclude=tags" <bar> cw<CR>
+
+" Search word in files
+map <F6> :execute "silent grep '" . expand("<cWORD>") . "' -r * --exclude=tags" <bar> cw<CR>
+
+" Open file in other programm
+nmap <F5> :execute g:opencmd "%" <cr>
+
+" Wrap Surround
+  vmap <Leader>w <Esc>:call VisualWrap("")<CR>
+  vmap " :call VisualWrap('"')<CR>
+  vmap ' :call VisualWrap("'")<CR>
+  vmap [ :call VisualWrap('[')<CR>
+  vmap ( :call VisualWrap('(')<CR>
+  vmap { :call VisualWrap('{')<CR>
+
+  function! VisualWrap(char)    
+    set paste
+    let btag = len(a:char) > 0 ? a:char : input("Wrapper:")
+    if btag[0] == "["
+      let etag = "]"
+    elseif btag[0] == "{"
+      let etag = "}"
+    elseif btag[0] == "("
+      let etag = ")"
+    elseif btag[0] == "<"
+      let etag = "</" . strpart(btag, 1)
+    else
+      let etag = btag
+    endif
+
+    if len(etag) > 0
+      normal `>
+      if &selection == 'exclusive'
+        exe "normal i".etag
+      else
+        exe "normal a".etag
+      endif
+      normal `<
+      exe "normal i".btag
+      normal `<
+    endif
+    set nopaste
+  endfunction
+
+  "  Compiler
+  au FileType ruby setl mp=ruby\ % 
+  set errorformat=%m\ in\ %f\ on\ line\ %l
+  nmap <F9> :silent make<cr> :copen<cr> :redraw!<cr>
+
+  " Session
+  map <S-F11> :NERDTreeClose <bar> mksession! ~/.vim/vim_session <cr>
+  map <S-F12> :source ~/.vim/vim_session <cr>
+
+  " Insert without formating
+  nmap <C-\><C-p> :setlocal paste! paste?<cr>
+
+" Removes trailing spaces
+ function! TrimWhiteSpace()
+   if !&binary && &filetype != 'diff'
+     normal mz
+     normal Hmy
+     %s/^\s\+$//e
+     normal 'yz<CR>
+     normal `z
+   endif
+ endfunction
+
+  " Filter and trim whitespaces
+  autocmd FileWritePre * :call TrimWhiteSpace()
+  autocmd FileAppendPre * :call TrimWhiteSpace()
+  autocmd FilterWritePre * :call TrimWhiteSpace()
+  autocmd BufWritePre * :call TrimWhiteSpace()
