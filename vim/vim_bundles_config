@@ -85,6 +85,10 @@ map <Leader>ts :call RunNearestSpec()<CR>
 map <Leader>tl :call RunLastSpec()<CR>
 map <Leader>ta :call RunAllSpecs()<CR>
 
+" Cucumber
+au BufNew,BufRead *.feature :map <Leader>tf :!cucumber ./% --require features<CR>
+map <Leader>tc :!cucumber<CR>
+
 " RI
 nnoremap  <Leader>RI :call ri#OpenSearchPrompt(0)<cr> " horizontal split
 nnoremap  <Leader>ri :call ri#OpenSearchPrompt(1)<cr> " vertical split
