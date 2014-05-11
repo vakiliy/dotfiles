@@ -131,6 +131,8 @@ Bundle 'gmarik/vundle'
   map <F2> :w<CR>
   imap <F2> <Esc><F2>
 
+" remove white space
+  imap <C-l> <C-o>J
 " replace remove
   map   <C-h> :%s/
   imap  <C-h> <C-o><C-h>
@@ -234,7 +236,7 @@ Bundle 'gmarik/vundle'
 :command! -nargs=* -complete=shellcmd Log new | setlocal buftype=nofile bufhidden=hide noswapfile | r! <args>
 
 " Todo
-map <C-\><C-t> :execute "silent grep -e TODO -e FIXME -Ri * --exclude=tags" <bar> cw<CR>
+map <C-\><C-t> :execute "silent grep -e TODO -e FIXME -Ri * --exclude=tags" <bar> cw <bar> redraw!<CR>
 
 " Search word in files
 map <F6> :execute "silent grep '" . expand("<cWORD>") . "' -r * --exclude=tags" <bar> cw<CR>
