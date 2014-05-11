@@ -9,7 +9,9 @@
   cm = commit -m
   ci = commit -v
   co = checkout
-  ignor = ls-files --others -i --exclude-standard
+  ig = ls-files --others -i --exclude-standard
+  unt = update-index --assume-unchanged
+  int = update-index --no-assume-unchanged
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
