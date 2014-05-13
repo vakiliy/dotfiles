@@ -287,8 +287,8 @@ nmap <F5> :execute g:opencmd "%" <cr>
   nmap <F9> :silent make<cr> :copen<cr> :redraw!<cr>
 
   " Session
-  map <S-F11> :NERDTreeClose <bar> mksession! ~/.vim/vim_session <cr>
-  map <S-F12> :source ~/.vim/vim_session <cr>
+  map <S-F11> :NERDTreeClose <bar> mksession! ~/.vim/vim_session  <cr>
+  map <S-F12> :source ~/.vim/vim_session<bar>:hi Normal ctermbg=NONE<cr>
 
   " Insert without formating
   nmap <C-\><C-p> :setlocal paste! paste?<cr>
