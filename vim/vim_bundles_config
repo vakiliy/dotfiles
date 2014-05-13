@@ -6,9 +6,9 @@
   let g:molokai_original = 1
   set background=dark
   hi Normal ctermbg=NONE
-  hi Visual term=reverse cterm=reverse guibg=Grey
+  hi Visual term=reverse cterm=reverse guibg=Black
   hi CursorLine cterm=NONE ctermbg=8 ctermfg=NONE
-  hi MatchParen cterm=bold ctermbg=none ctermfg=Red
+  hi MatchParen cterm=bold ctermbg=none ctermfg=White
 
   if &term =~ '256color'
       " disable Background Color Erase (BCE) so that color schemes
