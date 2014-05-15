@@ -143,6 +143,7 @@ Bundle 'gmarik/vundle'
   vmap <S-Tab> <gv
   nmap <Tab> > <Esc>
   nmap <S-Tab> < <Esc>
+  imap <S-Tab> <C-o>:<<CR>
 
 "  tabs
   map  <M-S-Left> :tabprev<CR>
