@@ -154,8 +154,16 @@ Bundle 'gmarik/vundle'
   nmap <C-t><C-t> :tabnew .<CR>
 
 " Buffer
-  map  <M-Left> :bp<CR>
-  map  <M-Right> :bn<CR>
+ function! SwitchBuffer(cmd)
+  if exists("b:NERDTreeType") && b:NERDTreeType == "primary"
+    exec 'wincmd l'
+  else
+    exec a:cmd
+  endif
+endfunction
+
+  map  <M-Left> :call SwitchBuffer('bp')<CR>
+  map  <M-Right> :call SwitchBuffer('bn')<CR>
   imap <M-Left> <C-o><M-Left>
   imap <M-Right> <C-o><M-Right>
 
