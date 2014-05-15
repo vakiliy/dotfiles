@@ -318,3 +318,6 @@ nmap <F5> :execute g:opencmd "%" <cr>
   autocmd FileAppendPre * :call TrimWhiteSpace()
   autocmd FilterWritePre * :call TrimWhiteSpace()
   autocmd BufWritePre * :call TrimWhiteSpace()
+
+  " Remove comments
+  map <Leader>dc :g/\v^(#\|$)/d <cr>
