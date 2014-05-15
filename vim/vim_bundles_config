@@ -7,7 +7,7 @@
   set background=dark
   hi Normal ctermbg=NONE
   hi Visual term=reverse cterm=reverse guibg=Black
-  hi CursorLine cterm=NONE ctermbg=8 ctermfg=NONE
+  hi CursorLine cterm=NONE ctermbg=0 ctermfg=NONE
   hi MatchParen cterm=bold ctermbg=none ctermfg=White
 
   if &term =~ '256color'
@@ -60,6 +60,7 @@ let g:NERTreeHighlightCursorLine=1
 " Find
 let g:ctrlp_map = '<C-p><C-p>'
 map <C-p><C-h> :CtrlPMRU<cr>
+" let g:ctrlp_use_caching = 0
 
 " Ruby
 autocmd BufNewFile,BufRead *.html.erb   set filetype=eruby.html  " load html snippets along with erb"
