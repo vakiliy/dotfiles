@@ -28,6 +28,10 @@ set ts=2 sw=2 et
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 
+" Syntastic
+let g:syntastic_jshint_exec = '/usr/local/bin/jshint'
+let g:syntastic_javascript_checkers = ['jshint']
+
 " Tree
 function! TreeViewType()
   if exists("b:NERDTreeType") && b:NERDTreeType == "primary" 
