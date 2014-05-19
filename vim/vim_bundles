@@ -23,7 +23,6 @@ Bundle "kien/ctrlp.vim"
 Bundle 'danro/rename.vim'
 
 " Other
-Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/ctags.vim'
@@ -41,7 +40,8 @@ Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
 Bundle 'groenewege/vim-less'
 Bundle 'KurtPreston/vim-autoformat-rails'
-" Bundle 'kchmck/vim-coffee-script'
+
+Bundle 'kchmck/vim-coffee-script'
 
 Bundle 'vim-scripts/ruby-matchit'
 Bundle 'kana/vim-textobj-user'
