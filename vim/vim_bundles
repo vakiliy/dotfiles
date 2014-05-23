@@ -42,6 +42,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'KurtPreston/vim-autoformat-rails'
 
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'briancollins/vim-jst'
 
 Bundle 'vim-scripts/ruby-matchit'
 Bundle 'kana/vim-textobj-user'
