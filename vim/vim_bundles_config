@@ -6,7 +6,8 @@
   let g:molokai_original = 1
   set background=dark
   hi Normal ctermbg=NONE
-  hi Visual term=reverse cterm=reverse guibg=Black
+  " hi Visual term=reverse cterm=reverse guibg=Black
+  hi Visual guibg=Gray gui=none ctermbg=DarkGray
   hi CursorLine cterm=NONE ctermbg=0 ctermfg=NONE
   hi MatchParen cterm=bold ctermbg=none ctermfg=White
 
