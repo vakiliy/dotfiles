@@ -248,7 +248,7 @@ endfunction
 map <C-\><C-t> :execute "silent grep -e TODO -e FIXME -Ri * --exclude=tags" <bar> cw <bar> redraw!<CR>
 
 " Search word in files
-map <F6> :execute "silent grep '" . expand("<cWORD>") . "' -r * --exclude=tags" <bar> cw<CR>
+map <F6> :execute "silent grep '" . expand("<cWORD>") . "' -r * --exclude=tags" <bar> cw <bar> redraw!<CR>
 
 " Open file in other programm
 nmap <F5> :execute g:opencmd "%" <cr>
