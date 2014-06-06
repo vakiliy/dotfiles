@@ -3,7 +3,7 @@
   " set term=screen-256color
   colorscheme molokai
   let g:rehash256 = 0
-  let g:molokai_original = 1
+  let g:molokai_original = 0
   set background=dark
   hi Normal ctermbg=NONE
   " hi Visual term=reverse cterm=reverse guibg=Black
