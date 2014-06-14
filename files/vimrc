@@ -116,7 +116,7 @@ Bundle 'gmarik/vundle'
   vmap <del> x
 
   " ctag
-  map <C-\><C-]> :!ctags --fields=+l --extra=+f --languages=-javascript --exclude=.git --exclude=log -R * `rvm gemdir`/gems/* `rvm gemdir`/bundler/gems/*<CR><C-M>
+  map <C-\><C-]> :!(ctags --fields=+l --extra=+f --languages=-javascript --exclude=.git --exclude=log -R * `rvm gemdir`/gems/* `rvm gemdir`/bundler/gems/* && echo Source Indexation complite) &<CR><C-M>
   set tags=tags;/
 
   " undo 
