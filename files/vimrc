@@ -226,6 +226,14 @@ endfunction
   nmap <C-S-Right> v<C-S-Right>
   imap <C-S-Right> <C-o>v<C-S-Right>
 
+  " move line
+  nmap <M-DOWN> :m .+1<CR>==
+  nmap <M-UP> :m .-2<CR>==
+  imap <M-DOWN> <Esc>:m .+1<CR>==gi
+  imap <M-UP> <Esc>:m .-2<CR>==gi
+  vmap <M-DOWN> :m '>+1<CR>gv=gv
+  vmap <M-UP> :m '<-2<CR>gv=gv
+
   " Other
   " open link under cursor
     function! HandleURL()
@@ -321,3 +329,6 @@ nmap <F5> :execute g:opencmd "%" <cr>
 
   " Remove comments
   map <Leader>dc :g/\v^(#\|$)/d <cr>
+
+  " Save with sudo
+  cmap w!! w !sudo tee > /dev/null %
