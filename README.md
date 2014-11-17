@@ -6,7 +6,7 @@
 
 git clone git@github.com:vakiliy/dotfiles.git
 sh install.sh
-sh vim-isntall.sh
+sh install-vim-bundle.sh
 
 ```
 
