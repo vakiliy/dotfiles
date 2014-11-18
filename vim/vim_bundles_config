@@ -1,6 +1,7 @@
 " Molokai color {
   set term=xterm-256color
   " set term=screen-256color
+  syntax on
   colorscheme molokai
   let g:rehash256 = 0
   let g:molokai_original = 0
