@@ -11,6 +11,7 @@
   hi Visual guibg=Gray gui=none ctermbg=DarkGray
   hi CursorLine cterm=NONE ctermbg=0 ctermfg=NONE
   hi MatchParen cterm=bold ctermbg=none ctermfg=White
+  hi Comment ctermfg=245
 
   if &term =~ '256color'
       " disable Background Color Erase (BCE) so that color schemes

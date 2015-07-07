@@ -8,8 +8,7 @@ if !exists("g:loaded_nerdtree_plugin_open")
 
   function! s:callback()
     let path = g:NERDTreeFileNode.GetSelected().path.str({'escape': 1})
-    let cmd = g:opencmd . " " . path
-    silent exec g:opencmd . " " . path
+    silent exec g:opencmd . " " . path | redraw!
   endfunction
 
   call NERDTreeAddKeyMap({
