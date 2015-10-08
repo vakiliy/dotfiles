@@ -186,6 +186,7 @@ endfunction
   imap <C-d><C-y> <C-o>dd
 
   " copy&past selection
+  set clipboard=unnamedplus
   vmap <C-c> y
   imap <C-v> <C-o>[p
 
@@ -332,3 +333,6 @@ nmap <F5> :execute g:opencmd "%" <cr>
 
   " Save with sudo
   cmap w!! w !sudo tee > /dev/null %
+
+  " Clear highlight
+  nnoremap <silent> <Esc><Esc><Esc> :nohl <bar> redraw! <CR>

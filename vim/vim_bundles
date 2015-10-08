@@ -50,6 +50,10 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " Experemetal
 Bundle 'danchoi/ri.vim'
+Bundle 'xolox/vim-lua-ftplugin'
+Bundle 'xolox/vim-misc'
+Bundle 'bronson/vim-trailing-whitespace'
+Bundle 'solars/github-vim'
 
 " Git
 Bundle 'airblade/vim-gitgutter'
