@@ -30,6 +30,3 @@
   path = .gitconfig.local
 [commit]
   template = ~/.gitmessage
-[user]
-	email = you@example.com
-	name = Your Name
