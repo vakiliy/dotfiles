@@ -270,7 +270,7 @@ nmap <F5> :execute g:opencmd "%" <cr>
   vmap ( :call VisualWrap('(')<CR>
   vmap { :call VisualWrap('{')<CR>
 
-  function! VisualWrap(char)    
+  function! VisualWrap(char)
     set paste
     let btag = len(a:char) > 0 ? a:char : input("Wrapper:")
     if btag[0] == "["
@@ -335,4 +335,5 @@ nmap <F5> :execute g:opencmd "%" <cr>
   cmap w!! w !sudo tee > /dev/null %
 
   " Clear highlight
-  nnoremap <silent> <Esc><Esc><Esc> :nohl <bar> redraw! <CR>
+  nmap <silent> <Leader><Esc> :nohl <bar> redraw! <CR><CR>
+  let g:rspec_command = "silent !(tmux send-keys -t right 'cd . && rspec {spec}' C-m)\n | redraw!"
