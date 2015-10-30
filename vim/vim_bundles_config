@@ -37,7 +37,7 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 " Tree
 function! TreeViewType()
-  if exists("b:NERDTreeType") && b:NERDTreeType == "primary" 
+  if exists("b:NERDTreeType") && b:NERDTreeType == "primary"
     NERDTree
   else
     if !exists("b:NERDTreeRoot")
@@ -71,7 +71,7 @@ map <C-p><C-h> :CtrlPMRU<cr>
 
 " Ruby
 autocmd BufNewFile,BufRead *.html.erb   set filetype=eruby.html  " load html snippets along with erb"
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
@@ -125,13 +125,19 @@ nmap <F8> :TagbarToggle<CR>
 
 " Aitline {
 let g:airline_theme='molokai'
-let g:airline_enable_fugitive=1
-let g:airline_enable_syntastic=1
-let g:airline_enable_bufferline=1
+let g:airline#extensions#syntastic#enabled=1
+let g:airline#extensions#bufferline#enabled=1
+let g:airline#extensions#branch#enabled = 1
 
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
-let g:airline_linecolumn_prefix = '¶ '
-let g:airline_fugitive_prefix = '⎇ '
-let g:airline_paste_symbol = 'ρ'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_symbols.linenr = '¶ '
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.whitespace = 'Ξ'
 " }
