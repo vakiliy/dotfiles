@@ -72,7 +72,9 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'majutsushi/tagbar'
 
 " Extend Status Bar
-Bundle 'bling/vim-airline'
+" Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 
 " Undo History (http://sjl.bitbucket.org/gundo.vim/)
 Bundle 'sjl/gundo.vim'

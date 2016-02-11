@@ -12,7 +12,7 @@
   ig = ls-files --others -i --exclude-standard
   unt = update-index --assume-unchanged
   int = update-index --no-assume-unchanged
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  hist = log --pretty=format:'%h %C(cyan)%ad%C(reset) | %s%d [%C(bold blue)%an]' --graph --date=short
   l = log --date-order --date=iso --graph --full-history --all --pretty=format:'%x08%x09%C(red)%h %C(cyan)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08 %C(bold blue)%aN%C(reset)%C(bold yellow)%d %C(reset)%s'
   create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
