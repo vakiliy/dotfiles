@@ -53,9 +53,16 @@ Bundle 'danchoi/ri.vim'
 Bundle 'xolox/vim-lua-ftplugin'
 Bundle 'xolox/vim-misc'
 Bundle 'bronson/vim-trailing-whitespace'
+Plugin 'lervag/vimtex'
+
+Plugin 'scrooloose/vim-slumlord'
+Plugin 'aklt/plantuml-syntax'
+
 " Bundle 'solars/github-vim'
 " Bundle 'vim-utils/vim-troll-stopper'
 Plugin 'udalov/kotlin-vim'
+
+Plugin 'fatih/vim-go'
 
 " Git
 Bundle 'airblade/vim-gitgutter'
